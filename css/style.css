@@ -48,14 +48,17 @@ header {
 
 .text-box {
     position: absolute;
-    top: 40%;
+    top: 40%; /*relative to parent element*/
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /*relative to itself*/
+    text-align: center; /*main button is a text element*/
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+    margin-bottom: 60px; /*add margin to separate main 
+        button*/
 }
 
 .heading-primary-main {
@@ -79,7 +82,43 @@ header {
     text-transform: uppercase;
     text-decoration: none;
     padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
 }
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2); /* x y blur color */ 
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "AFTER";
+    display: inline-block;
+    height: 100%; /* It works because pseudo-elements behave like a child. So is 100% of the botton height  */
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+}
+
+.btn-white::after {
+    background-color: #fff;
+
 
 @keyframes moveInLeft {
     0% {
