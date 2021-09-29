@@ -13,13 +13,17 @@ Dark green: #28b485
     box-sizing: border-box;
 }
 
+html {
+    font-size: 62.5%; /* 10/16 = 0.625. This set allows 
+        users to change default font-size*/
+}
+
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
 }
 
 header {
@@ -37,13 +41,13 @@ header {
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .logobox {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .text-box {
@@ -57,45 +61,46 @@ header {
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
-    margin-bottom: 60px; /*add margin to separate main 
+    margin-bottom: 6rem; /*add margin to separate main 
         button*/
 }
 
 .heading-primary-main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 700;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
     animation: moveInLeft 1s ease-out;
 }
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 400;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out;
 }
 
 .btn:link,
 .btn:visited {
+    font-size: 1.6rem;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s;
     position: relative;
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,.2); /* x y blur color */ 
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2); /* x y blur color */ 
 }
 
 .btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 20px rgba(0,0,0,.2);
+    box-shadow: 0 0.5rem 2rem rgba(0,0,0,.2);
 }
 
 .btn-white {
@@ -104,30 +109,44 @@ header {
 }
 
 .btn::after {
-    content: "AFTER";
+    content: "";
     display: inline-block;
-    height: 100%; /* It works because pseudo-elements behave like a child. So is 100% of the botton height  */
+    height: 100%; /* It works because pseudo-elements behave 
+        like a child. So is 100% of the botton height  */
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
-
+    transition: all .4s;
 }
 
 .btn-white::after {
     background-color: #fff;
+}
+
+.btn:hover::after {    
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInButton .5s ease-out .75s; /*last value 
+        is delay time*/
+    animation-fill-mode: backwards; /*Apply 0% styles when 
+        animation begins*/
+}
 
 
 @keyframes moveInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translatex(15px);
+        transform: translatex(1.5rem);
     }
     100% {
         opacity: 1;
@@ -138,12 +157,24 @@ header {
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translatex(-15px);
+        transform: translatex(-1.5rem);
     }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
     100% {
         opacity: 1;
         transform: translate(0);
