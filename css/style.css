@@ -39,14 +39,19 @@ html {
         users to change default font-size*/ }
 
 body {
+  box-sizing: border-box;
+  /* Not inherited */ }
+
+body {
   font-family: "Lato", sans-serif;
+  /* font is inherit by child tags. More efficient then use the universal selector */
   font-weight: 400;
+  /*font-size: 16px;*/
+  /* Remove . Now we are using 10px root font-size*/
   line-height: 1.7;
   color: #777;
   padding: 3rem;
-  /* padding is not inherit */
-  box-sizing: border-box;
-  /* Not inherited */ }
+  /* padding is not inherit */ }
 
 .heading-primary {
   color: #fff;
@@ -118,6 +123,20 @@ body {
   animation-fill-mode: backwards;
   /*Apply 0% styles when 
             animation begins*/ }
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto;
+  /* trick to center block element inside 
+        of another block elements. auto value results in a 
+        margin of the same size left and right*/ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row .col-1-of-2 {
+    float: left;
+    background-color: orangered;
+    width: calc((100% - 6rem) / 2); }
 
 .header {
   height: 95vh;
